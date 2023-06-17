@@ -41,13 +41,22 @@ const ExpenseForm = () => {
         // })
     };
 
+    const inputChangeHandler = (identifier, value) => {
+        if (identifier === 'title') {
+            setEnteredTitle(value);
+        } else if (identifier === 'date') {
+            setEnteredDate(value);
+        } else {
+            setEnteredAmount(value);
+        }
+    };
 
     return (
         <form>
             <div className='new-expense__controls'>
                 <div className='new-expense__control'>
                     <label>Title</label>
-                    <input type='text' onChange={titleChangeHandler}></input> 
+                    <input type='text' onChange={(event) => inputChangeHandler('title', event.target.value)}></input> 
                </div>
                <div className='new-expense__control'>
                     <label>Amount</label>
