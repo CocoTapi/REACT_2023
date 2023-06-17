@@ -9,12 +9,12 @@ function ExpenseItem(props) {
     const {title, amount, date} = props.item;
     const [newTitle, setTitle] =  useState(title);
     //must be inside a function. This lead the function calls again 
-    //useState(This is something that is shown before clicking and something that you want to update)
+    //useState(tutle: This is something that is shown before clicking and something that you want to update)
    
     const clickHandler = () => {
         //shows "Updated" on the screen 
         setTitle('Updated');
-        //setTitle(This is what you want to show after clicking)
+        //setTitle('Updated': This is what you want to show after clicking)
         console.log(newTitle);
     };
 
