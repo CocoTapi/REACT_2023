@@ -41,22 +41,34 @@ const ExpenseForm = () => {
         // })
     };
 
-    const inputChangeHandler = (identifier, value) => {
-        if (identifier === 'title') {
-            setEnteredTitle(value);
-        } else if (identifier === 'date') {
-            setEnteredDate(value);
-        } else {
-            setEnteredAmount(value);
-        }
-    };
+    // const inputChangeHandler = (identifier, value) => {
+    //     if (identifier === 'title') {
+    //         setEnteredTitle(value);
+    //     } else if (identifier === 'date') {
+    //         setEnteredDate(value);
+    //     } else {
+    //         setEnteredAmount(value);
+    //     }
+    // };
+
+    const submitHandler = (event) => {
+        event.preventDefault();
+
+        const expenseData = {
+            title: enteredTitle,
+            amount: enteredAmount,
+            date: new Date(enteredDate)
+        };
+
+        console.log(expenseData);
+    } 
 
     return (
-        <form>
+        <form onSubmit={submitHandler}>
             <div className='new-expense__controls'>
                 <div className='new-expense__control'>
                     <label>Title</label>
-                    <input type='text' onChange={(event) => inputChangeHandler('title', event.target.value)}></input> 
+                    <input type='text' onChange={titleChangeHandler}></input> 
                </div>
                <div className='new-expense__control'>
                     <label>Amount</label>
