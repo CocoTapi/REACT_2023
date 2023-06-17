@@ -2,7 +2,7 @@ import React, {useState} from 'react';
 
 import './ExpenseForm.css';
 
-const ExpenseForm = () => {
+const ExpenseForm = (props) => {
     const [enteredTitle, setEnteredTitle] = useState('');
     const [enteredAmount, setEnteredAmount] = useState('');
     //when it's stored as a string
@@ -60,8 +60,11 @@ const ExpenseForm = () => {
             date: new Date(enteredDate)
         };
 
-        console.log(expenseData);
+        // console.log(expenseData);
         //for two-way-binding
+
+        //this needs to communicate with parent component
+        props.onSaveExpenseData();
         setEnteredTitle('');
         setEnteredAmount('');
         setEnteredDate('');
