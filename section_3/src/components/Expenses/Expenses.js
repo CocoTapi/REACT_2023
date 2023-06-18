@@ -31,7 +31,17 @@ const expenses = [
 
 function Expenses(props) {
   //for updating states  
-  const [filteredYear, setFilteredYear] = useState('2020');
+    const [filteredYear, setFilteredYear] = useState('2020');
+
+    let filterInfoText = '2019, 2021 & 2022';
+
+    if (filteredYear === '2019') {
+      filterInfoText = '2020, 2021 & 2022';
+    } else if (filteredYear === '2020') {
+      filterInfoText = '2019, 2021 & 2022';
+    } else {
+      filterInfoText = '2019, 2020 & 2021';
+    }
 
     const filterChangeHandler = selectedYear => {
         console.log('Expenses.js');
@@ -39,22 +49,25 @@ function Expenses(props) {
     }
 
     return (
-      <Card className="expenses">
-        {/* selected={filteredYear} is for default. In ExpenseFilter,js, add value in <select>*/}
-        <ExpenseFilter selected={filteredYear} onChangeFilter={filterChangeHandler}></ExpenseFilter>
-        <ExpenseItem
-          item={expenses[0]}
-        ></ExpenseItem>
-        <ExpenseItem
-        item={expenses[1]}
-        ></ExpenseItem>
-        <ExpenseItem 
-        item={expenses[2]}
-        ></ExpenseItem>
-        <ExpenseItem 
-        item={expenses[3]}
-        ></ExpenseItem>
-      </Card>
+      <div>
+        <Card className="expenses">
+          {/* selected={filteredYear} is for default. In ExpenseFilter,js, add value in <select>*/}
+          <ExpenseFilter selected={filteredYear} onChangeFilter={filterChangeHandler}></ExpenseFilter>
+          <p>Data for years {filterInfoText} is hidden.</p>
+          <ExpenseItem
+            item={expenses[0]}
+          ></ExpenseItem>
+          <ExpenseItem
+            item={expenses[1]}
+          ></ExpenseItem>
+          <ExpenseItem 
+            item={expenses[2]}
+          ></ExpenseItem>
+          <ExpenseItem 
+            item={expenses[3]}
+          ></ExpenseItem>
+        </Card>
+      </div>
     );
   }
   
