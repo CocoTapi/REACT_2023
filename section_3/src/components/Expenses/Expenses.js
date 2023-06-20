@@ -29,7 +29,6 @@ function Expenses(props) {
     return (
       <div>
         <Card className="expenses">
-          {/* selected={filteredYear} is for default. In ExpenseFilter,js, add value in <select>*/}
           <ExpenseFilter selected={filteredYear} onChangeFilter={filterChangeHandler}></ExpenseFilter>
           <p>Data for years {filterInfoText} is hidden.</p>
           {props.items.map((expense) => {
@@ -45,4 +44,7 @@ function Expenses(props) {
   }
   
   export default Expenses;
+
+  /* line 32: selected={filteredYear} is for default. In ExpenseFilter,js, add value in <select>*/
+
   
