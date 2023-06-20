@@ -6,11 +6,12 @@ import './ExpenseItem.css';
 
 
 function ExpenseItem(props) {
-    const {title, amount, date} = props.item;
-    const [newTitle, setTitle] =  useState(title);
+    const { title, amount, date } = props;
+
+    const [newTitle, setTitle] = useState(title);
     //must be inside a function. This lead the function calls again 
     //useState(tutle: This is something that is shown before clicking and something that you want to update)
-   
+
     const clickHandler = () => {
         //shows "Updated" on the screen 
         setTitle('Updated');
@@ -19,15 +20,15 @@ function ExpenseItem(props) {
     };
 
     return (
-    //changed <div> to <Card>
-    <Card className="expense-item"> 
-        <ExpenseDate date={date}></ExpenseDate>
-        <div className="expense-item__description">
-            <h2>{newTitle}</h2>
-            <div className="expense-item__price">${amount}</div>
-        </div> 
-        <button onClick={clickHandler}>Change Title</button>
-    </Card>
+        //changed <div> to <Card>
+        <Card className="expense-item">
+            <ExpenseDate date={date}></ExpenseDate>
+            <div className="expense-item__description">
+                <h2>{newTitle}</h2>
+                <div className="expense-item__price">${amount}</div>
+            </div>
+            <button onClick={clickHandler}>Change Title</button>
+        </Card>
     )
 }
 
