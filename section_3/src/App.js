@@ -1,7 +1,9 @@
+import React, { useState } from 'react';
+
 import Expenses from "./components/Expenses/Expenses";
 import NewExpense from "./components/NewExpense/NewExpense";
 
-const expenses = [
+const INITIAL_EXPENSES = [
   {
     title: "Dodger's Food",
     amount: 37.99,
@@ -27,8 +29,12 @@ const expenses = [
 
 
 function App () {
+const [expenses, setExpenses] = useState(INITIAL_EXPENSES);
+
   const addExpenseHandler = expense => {
-    console.log(expenses);
+    setExpenses(prevExpenses => {
+      return [expense, ...prevExpenses];
+    });
   }
 
   return (
