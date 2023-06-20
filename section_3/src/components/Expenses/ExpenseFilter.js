@@ -11,7 +11,6 @@ const ExpenseFilter = (props) => {
         <div className='expense-filter'>
             <div className='expense-filter__control'>
                 <label>Filter by year</label>
-                {/* value={props.selected} is for default */}
                 <select value={props.selected} onChange={dropdownChangeHandler}>
                     <option value='2022'>2022</option>
                     <option value='2021'>2021</option>
@@ -24,3 +23,5 @@ const ExpenseFilter = (props) => {
 };
 
 export default ExpenseFilter;
+
+ /* line 14: value={props.selected} is for default */

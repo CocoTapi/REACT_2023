@@ -26,15 +26,19 @@ function Expenses(props) {
         setFilteredYear(selectedYear);
     }
 
+    const filteredExpenses = props.items.filter(expense => {
+      return expense.date.getFullYear().toString() === filteredYear;
+      })
+
+
     return (
       <div>
         <Card className="expenses">
           <ExpenseFilter selected={filteredYear} onChangeFilter={filterChangeHandler}></ExpenseFilter>
           <p>Data for years {filterInfoText} is hidden.</p>
-          {props.items.map((expense) => {
-            return (
+          {filteredExpenses.map((expense) => {
              <ExpenseItem key={expense.id} title={expense.title} amount={expense.amount} date={expense.date} />
-          )}
+          }
           )};
 
         
@@ -46,5 +50,9 @@ function Expenses(props) {
   export default Expenses;
 
   /* line 32: selected={filteredYear} is for default. In ExpenseFilter,js, add value in <select>*/
+
+  //const filteredExpenses = props.items.filter(expense => {
+  //   return expense.date.getFullYear().toString() === filteredYear;
+  // })
 
   
