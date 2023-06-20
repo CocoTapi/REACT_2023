@@ -33,7 +33,7 @@ function Expenses(props) {
           <p>Data for years {filterInfoText} is hidden.</p>
           {props.items.map((expense) => {
             return (
-             <ExpenseItem title={expense.title} amount={expense.amount} date={expense.date} />
+             <ExpenseItem key={expense.id} title={expense.title} amount={expense.amount} date={expense.date} />
           )}
           )};
 
