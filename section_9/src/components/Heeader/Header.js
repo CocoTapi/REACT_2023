@@ -1,5 +1,6 @@
 import React from 'react';
-import logo from './assets/investment-calculator-logo.png';
+import logo from '../../assets/investment-calculator-logo.png';
+
 
 const Header = () => {
     return (
@@ -11,3 +12,6 @@ const Header = () => {
 }
 
 export default Header;
+
+
+//
