@@ -1,6 +1,7 @@
 import logo from './assets/investment-calculator-logo.png';
 import SavingsForm from './components/SavingsForm';
-import ResultTable from '../../section_8/src/components/ResultTable';
+import ResultTable from './components/ResultTable';
+import Header from './components/Heeader/Header';
 
 function App() {
   const calculateHandler = (userInput) => {
@@ -32,10 +33,7 @@ function App() {
 
   return (
     <div>
-      <header className="header">
-        <img src={logo} alt="logo" />
-        <h1>Investment Calculator</h1>
-      </header>
+      <Header></Header>
 
       <SavingsForm></SavingsForm>
 
