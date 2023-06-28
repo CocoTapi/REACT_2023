@@ -1,6 +1,19 @@
 import React from 'react';
 
 const SavingsForm = () => {
+    const submitHandler = (event) => {
+        event.preventDefault();
+        console.log('SUBMIT');
+    };
+
+    const resetHandler = () => {
+        console.log("RESET");
+    }
+
+    const changeHandler = (input, value) => {
+
+    }
+
     const calculateHandler = (userInput) => {
         // Should be triggered when form is submitted
         // You might not directly want to bind it to the submit event on the form though...
@@ -32,7 +45,7 @@ const SavingsForm = () => {
 
 
     return (
-        <form className="form">
+        <form onSubmit={submitHandler} className="form">
             <div className="input-group">
                 <p>
                     <label htmlFor="current-savings">Current Savings ($)</label>
@@ -58,7 +71,7 @@ const SavingsForm = () => {
                 </p>
             </div>
                 <p className="actions">
-                <button type="reset" className="buttonAlt">
+                <button onClick={resetHandler} type="reset" className="buttonAlt">
                     Reset
                 </button>
                 <button type="submit" className="button">
