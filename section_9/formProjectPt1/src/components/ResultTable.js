@@ -1,6 +1,6 @@
 import React from 'react';
 
-const ResultTable = () => {
+const ResultTable = (props) => {
     return (
         <table className="result">
         <thead>
@@ -13,13 +13,16 @@ const ResultTable = () => {
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <td>YEAR NUMBER</td>
-            <td>TOTAL SAVINGS END OF YEAR</td>
-            <td>INTEREST GAINED IN YEAR</td>
-            <td>TOTAL INTEREST GAINED</td>
-            <td>TOTAL INVESTED CAPITAL</td>
-          </tr>
+          {props.data.map((yearData) => {
+            <tr>
+              <td> {yearData.year} </td>
+              <td> {yearData.savingsEndOfYear} </td>
+              <td> {yearData.yearlyInterest} </td>
+              <td> {yearData.savingsEndOfYear - INITIAL INVESTMENT - yearData.yearlyContribution * yearData.year} TOTAL INTEREST GAINED</td>
+              <td>TOTAL INVESTED CAPITAL</td>
+            </tr>
+          })}
+          
         </tbody>
       </table>
     )
