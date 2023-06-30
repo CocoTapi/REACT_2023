@@ -18,8 +18,15 @@ const ResultTable = (props) => {
               <td> {yearData.year} </td>
               <td> {yearData.savingsEndOfYear} </td>
               <td> {yearData.yearlyInterest} </td>
-              <td> {yearData.savingsEndOfYear - INITIAL INVESTMENT - yearData.yearlyContribution * yearData.year} TOTAL INTEREST GAINED</td>
-              <td>TOTAL INVESTED CAPITAL</td>
+              <td> 
+                {yearData.savingsEndOfYear - 
+                  props.initialInvestment - 
+                  yearData.yearlyContribution * yearData.year} 
+              </td>
+              <td> 
+                {props.initialInvestment + 
+                  yearData.yearlyContribution * yearData.year} 
+              </td>
             </tr>
           })}
           
