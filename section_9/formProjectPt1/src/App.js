@@ -42,7 +42,9 @@ function App() {
       {/* Todo: Show below table conditionally (only once result data is available) */}
       {/* Show fallback text if no data is available */}
 
-      <ResultTable></ResultTable>
+      {!userInput && <p>No Investment calculated yet.</p>}
+      {userInput && <ResultTable></ResultTable>}
+    
     </div>
   );
 }
