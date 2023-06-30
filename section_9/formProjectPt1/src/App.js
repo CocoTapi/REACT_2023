@@ -1,8 +1,10 @@
+import React, {useState} from 'react';
 import SavingsForm from './components/SavingsForm';
 import ResultTable from './components/ResultTable';
 import Header from './components/Heeader/Header';
 
 function App() {
+  const [results, setResults] = useState()
 
   const calculateHandler = (userInput) => {
     // Should be triggered when form is submitted
@@ -30,13 +32,14 @@ function App() {
     }
 
     // do something with yearlyData ...
+    setResults(yearlyData)
   };
   
   return (
     <div>
       <Header></Header>
 
-      <SavingsForm></SavingsForm>
+      <SavingsForm onCalculate={calculateHandler}></SavingsForm>
 
       {/* Todo: Show below table conditionally (only once result data is available) */}
       {/* Show fallback text if no data is available */}
