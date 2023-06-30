@@ -1,17 +1,36 @@
-import React from 'react';
+import React, {useState} from 'react';
+
+const initialUserInput = {
+    'current-savings': 10000,
+    'yearly-contribution': 1200,
+    'expected-return': 7,
+    'duration': 10
+}
 
 const SavingsForm = () => {
+    const [useInput, setUserInput] = useState({
+        'current-savings': 10000,
+        'yearly-contribution': 1200,
+        'expected-return': 7,
+        'duration': 10
+    })
+
     const submitHandler = (event) => {
         event.preventDefault();
         console.log('SUBMIT');
     };
 
     const resetHandler = () => {
-        console.log("RESET");
+        setUserInput(initialUserInput);
     };
 
     const inputChangeHandler = (input, value) => {
-        console.log(input);
+        setUserInput((previousInput) => {
+            return {
+                ...previousInput,
+                [input]: value,
+            }
+        });
     };
 
     const calculateHandler = (userInput) => {
@@ -49,7 +68,7 @@ const SavingsForm = () => {
             <div className="input-group">
                 <p>
                     <label htmlFor="current-savings">Current Savings ($)</label>
-                    <input onChange={(event) => inputChangeHandler('current-savings', event.target.value)} type="number" id="current-savings" />
+                    <input onChange={(event) => inputChangeHandler('current-savings', event.target.value)}  type="number" id="current-savings" />
                 </p>
                 <p>
                     <label htmlFor="yearly-contribution">Yearly Savings ($)</label>
