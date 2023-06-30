@@ -43,7 +43,7 @@ function App() {
       {/* Show fallback text if no data is available */}
 
       {!userInput && <p>No Investment calculated yet.</p>}
-      {userInput && <ResultTable></ResultTable>}
+      {userInput && <ResultTable data={yearlyData} ></ResultTable>}
     
     </div>
   );
