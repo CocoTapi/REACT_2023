@@ -11,7 +11,7 @@ const SavingsForm = () => {
     };
 
     const inputChangeHandler = (input, value) => {
-
+        console.log(input);
     };
 
     const calculateHandler = (userInput) => {
