@@ -1,6 +1,7 @@
 import React, {useState} from 'react';
 import classes from './AddUser.module.css';
 import Card from '../UI/Card'
+import Button from '../UI/Button'
 
 const AddUser = (props) => {
     const [newUser, setNewUser] = useState({
@@ -33,7 +34,7 @@ const AddUser = (props) => {
                 <input id='username' type='text' onChange={(event) => inputChangeHandler('username', event.target.value)} value={newUser['username']}></input>
                 <label htmlFor='age'>Age</label>
                 <input id='age' type='number' onChange={(event) => inputChangeHandler('age', event.target.value)} value={newUser['age']}></input>
-                <button type='submit' onClick={addUserHandler}>Add User</button>
+                <Button type='submit' onClick={addUserHandler}>Add User</Button>
             </form>
         </Card>
     )
