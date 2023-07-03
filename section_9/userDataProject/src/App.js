@@ -4,8 +4,8 @@ import AddUser from './components/Users/AddUser';
 function App() {
   const [userInput, setUserInput] = useState(null);
 
-  const addUserHandler = () => {
-    setUserInput();
+  const addUserHandler = (userInput) => {
+    setUserInput(userInput);
   }
 
   return (

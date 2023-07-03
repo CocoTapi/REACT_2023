@@ -1,5 +1,6 @@
 import React, {useState} from 'react';
 import classes from './AddUser.module.css';
+import Card from '../UI/Card'
 
 const AddUser = (props) => {
     const [newUser, setNewUser] = useState({
@@ -26,13 +27,15 @@ const AddUser = (props) => {
     }
 
     return (
-        <form onSubmit={addUserHandler} className={classes.form}>
-            <label htmlFor='username' >Username</label>
-            <input id='username' type='text' onChange={(event) => inputChangeHandler('username', event.target.value)} value={newUser['username']}></input>
-            <label htmlFor='age'>Age</label>
-            <input id='age' type='number' onChange={(event) => inputChangeHandler('age', event.target.value)} value={newUser['age']}></input>
-            <button type='submit' onClick={addUserHandler}>Add User</button>
-        </form>
+        <Card  className={classes.input}>
+            <form onSubmit={addUserHandler}>
+                <label htmlFor='username' >Username</label>
+                <input id='username' type='text' onChange={(event) => inputChangeHandler('username', event.target.value)} value={newUser['username']}></input>
+                <label htmlFor='age'>Age</label>
+                <input id='age' type='number' onChange={(event) => inputChangeHandler('age', event.target.value)} value={newUser['age']}></input>
+                <button type='submit' onClick={addUserHandler}>Add User</button>
+            </form>
+        </Card>
     )
 }
 
