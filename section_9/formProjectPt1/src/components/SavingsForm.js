@@ -30,7 +30,7 @@ const SavingsForm = (props) => {
         setUserInput((previousInput) => {
             return {
                 ...previousInput,
-                [input]: value,
+                [input]: +value, //the "+" converts the string value to a number
             }
         });
     };    
