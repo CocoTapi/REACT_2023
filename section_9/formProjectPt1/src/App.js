@@ -3,6 +3,7 @@ import SavingsForm from './components/SavingsForm';
 import ResultTable from './components/ResultTable';
 import Header from './components/Heeader/Header';
 
+
 function App() {
   const [userInput, setUserInput] = useState(null)
 
@@ -41,7 +42,7 @@ function App() {
 
       <SavingsForm onCalculate={calculateHandler}></SavingsForm>
 
-      {!userInput && <p>No Investment calculated yet.</p>}
+      {!userInput && <p style={{textAlign: 'center'}}>No Investment calculated yet.</p>}
       {userInput && <ResultTable data={yearlyData} initialInvestment={userInput['current-savings']}></ResultTable>}
     
     </div>
