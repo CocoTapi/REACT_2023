@@ -1,10 +1,16 @@
-import React from 'react';
+import React, {useState} from 'react';
 import AddUser from './components/Users/AddUser';
 
 function App() {
+  const [userInput, setUserInput] = useState(null);
+
+  const addUserHandler = () => {
+    setUserInput();
+  }
+
   return (
     <div>
-      <AddUser></AddUser>
+      <AddUser onAddNewUser={addUserHandler}></AddUser>
     </div>
   );
 }
