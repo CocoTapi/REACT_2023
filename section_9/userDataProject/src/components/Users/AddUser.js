@@ -9,10 +9,14 @@ const AddUser = (props) => {
 
     const inputChangeHandler = (input, value) => {
         setEnteredUser( (previousUserList) => {
+           if (value.length < 1) {
+            return <p>Please enter valid username and age</p>
+           } else {
             return {
                 ...previousUserList,
                 [input]: value
             }
+           }
         }
 
         );
