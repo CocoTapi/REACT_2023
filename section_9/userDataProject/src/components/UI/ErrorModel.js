@@ -2,17 +2,17 @@
 
 import Card from './Card';
 import Button from './Button';
-import classe from '/ErrorModel.module.css'
+import classes from '/ErrorModel.module.css'
 
 const ErrorModel = (props) => {
-    return <Card>
-        <header>
+    return <Card className={classes.model} >
+        <header className={classes.header} >
             <h2>{props.title}</h2>
         </header>
-        <div>
+        <div className={classes.content} >
             <p>{props.message}</p>
         </div>
-        <footer>
+        <footer className={classes.action} >
             <Button>Okay</Button>
         </footer>
     </Card>
