@@ -3,16 +3,18 @@ import AddUser from './components/Users/AddUser';
 import UsersList from './components/Users/UsersList';
 
 function App() {
-  const [userInput, setUserInput] = useState(null);
+  const [usersList, setUsersList] = useState([]);
 
-  const addUserHandler = (userInput) => {
-    setUserInput(userInput);
+  const addUserHandler = (uName, uAge) => {
+    setUsersList((prevUsersList) => {
+      return [...prevUsersList, { name: uName, age: uAge}];
+    });
   }
 
   return (
     <div>
-      <AddUser onAddNewUser={addUserHandler}></AddUser>
-      <UsersList users={[]}></UsersList>
+      <AddUser onAddUser={addUserHandler}></AddUser>
+      <UsersList users={usersList}></UsersList>
     </div>
   );
 }
