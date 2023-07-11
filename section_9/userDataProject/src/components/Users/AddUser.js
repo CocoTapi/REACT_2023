@@ -36,13 +36,15 @@ const AddUser = (props) => {
         props.onAddUser(enteredUsername, enteredAge);
         setEnteredUsername('');
         setEnteredAge('');
+    }
 
-
+    const errorHandler = () => {
+        setError(null);
     }
 
     return (
         <div>
-        {error && <ErrorModel title={error.title} message={error.message} ></ErrorModel>}
+        {error && <ErrorModel title={error.title} message={error.message} onConfirm={errorHandler} ></ErrorModel>}
         <Card  className={classes.input}>
             <form onSubmit={addUserHandler}>
                 <label htmlFor='username' >Username</label>
