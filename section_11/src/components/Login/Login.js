@@ -15,9 +15,14 @@ const Login = (props) => {
   //it will return this useState function but only if either 
   //serFormIsValid, enteredEmail, or enteredPassword changed  
   useEffect( () => {
-    setFormIsValid(
-      enteredEmail.includes('@') && enteredPassword.trim().length > 6
-    );
+
+     //prevent from sending requests for all keystroke
+     setTimeout(() => {
+      setFormIsValid(
+        enteredEmail.includes('@') && enteredPassword.trim().length > 6
+      );
+     }, 500);
+   
   }, [setFormIsValid, enteredEmail, enteredPassword])
   //you can omit the first dependency: "setFormISValid". 
 
