@@ -15,14 +15,22 @@ const Login = (props) => {
   //it will return this useState function but only if either 
   //serFormIsValid, enteredEmail, or enteredPassword changed  
   useEffect( () => {
-
      //prevent from sending requests for all keystroke
-     setTimeout(() => {
+     //as long as typing, the clock won't start. When people stop typing the clock starts. 
+     //this runs a half second after the user stop tiping and the very first time when you start the app
+     const identifier = setTimeout(() => {
+      console.log("checking form validity!")
       setFormIsValid(
         enteredEmail.includes('@') && enteredPassword.trim().length > 6
       );
      }, 500);
    
+     //cleanup function.This runs before every new sideEffect function execution 
+     //doesn't run the very first time when you start the app.
+     return () => {
+      console.log("CLEANUP")
+      clearTimeout(identifier);
+     };
   }, [setFormIsValid, enteredEmail, enteredPassword])
   //you can omit the first dependency: "setFormISValid". 
 
