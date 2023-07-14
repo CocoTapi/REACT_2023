@@ -16,13 +16,13 @@ const emailReducer = (state, action) => {
 }
 
 const passwordReducer = (state, action) => {
-  if (action.type === 'PASS_INPUT') {
-    return {value: action.val, isPassValid: action.val.length > 6};
+  if (action.type === 'USER_INPUT') {
+    return {value: action.val, isValid: action.val.trim().length > 6};
   }
-  if (action.type === 'PASS_BLUR') {
-    return {value: state.value, isPassValid: state.value.length > 6};
+  if (action.type === 'INPUT_BLUR') {
+    return {value: state.value, isValid: state.value.trim().length > 6};
   }
-  return {value: '', isPassValid: false};
+  return {value: '', isValid: false};
 }
 
 const Login = (props) => {
@@ -39,7 +39,7 @@ const Login = (props) => {
 
   const [passwordState , dispatchPassword] = useReducer(passwordReducer, {
     value: '',
-    isPassValid: null,
+    isValid: null,
   })
 
   useEffect(() => {
@@ -73,7 +73,7 @@ const Login = (props) => {
   };
 
   const passwordChangeHandler = (event) => {
-    dispatchPassword({type: 'PASS_INPUT', val: event.target.value});
+    dispatchPassword({type: 'USER_INPUT', val: event.target.value});
 
     setFormIsValid(
       emailState.isValid && event.target.value.trim().length > 6
@@ -85,7 +85,7 @@ const Login = (props) => {
   };
 
   const validatePasswordHandler = () => {
-    dispatchPassword({type: 'PASS_BLUR'});
+    dispatchPassword({type: 'INPUT_BLUR'});
   };
 
   const submitHandler = (event) => {
@@ -112,7 +112,7 @@ const Login = (props) => {
         </div>
         <div
           className={`${classes.control} ${
-            passwordIsValid === false ? classes.invalid : ''
+            passwordState.isValid === false ? classes.invalid : ''
           }`}
         >
           <label htmlFor="password">Password</label>
