@@ -4,11 +4,10 @@ import classes from './Navigation.module.css';
 import AuthContext from '../../store/auth-context';
 
 const Navigation = (props) => {
-  
   const ctx = useContext(AuthContext);
   
   return (
-    <nav className={classes.nav}>
+   <nav className={classes.nav}>
       <ul>
         {ctx.isLoggedIn && (
         <li>
@@ -26,8 +25,7 @@ const Navigation = (props) => {
             </li>
           )}
         </ul>
-      </nav>
-       
+    </nav>
   );
 };
 
