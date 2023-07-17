@@ -1,0 +1,42 @@
+import classes from './AvailableMeals.module.css' ;
+
+const PORK_MEALS = [
+    {
+        id: 'm1',
+        name: 'Pork Fillet',
+        description: '2 Pork Fillets, cabage salad, and lemon on the top',
+        price: 800
+    },
+    {
+        id: 'm2',
+        name: 'Pork Fillet Big',
+        description: '3 Pork Fillets, cabage salad, and lemon on the top',
+        price: 1200 
+    },
+    {
+        id: 'm3',
+        name: 'Special Pork Fillet',
+        description: 'Several Pork Fillets, cabage salad, and lemon on the top',
+        price: 1500
+    },
+    {
+        id: 'm4',
+        name: 'Stick Pork Fillet',
+        description: 'A thick large Pork Fillets, cabage salad, and lemon on the top',
+        price: 1400
+    }
+]
+ 
+const AvailableMeals = () => {
+const mealsList = PORK_MEALS.map(meal => <li>{meal.name}</li>);
+
+    return (
+        <section className={classes.summary}>
+            <ul>
+                {mealsList}
+            </ul>
+        </section>
+    )
+};
+
+export default AvailableMeals;
