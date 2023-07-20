@@ -4,26 +4,70 @@ import CartContext from './cart-context';
 
 const defaultCartState = {
     items: [],
-    totalAmount: 0
+    totalAmount: 0,
 }
 
 const cartReducer = (state, action) => {
     if (action.type === 'ADD') {
-      const updatedItems = state.items.concat(action.item) ;
-      const updatedTotalAmount = state.totalAmount + action.item.price * action.item.amount;
+      const updatedTotalAmount = 
+        state.totalAmount + action.item.price * action.item.amount;
+      
+      const existingCartItemIndex = state.items.findIndex(
+            (item) => item.id === action.id
+      );
+        
+      const existingCartItem = state.items[existingCartItemIndex];
+      let updatedItems;
+    
+      if(existingCartItem){
+        const updatedItem = {
+            ...existingCartItem,
+            amount: existingCartItem.amount + action.item.amount
+        };
+        updatedItems = [...state.items];
+        updatedItems[existingCartItemIndex] = updatedItem;
+      } else {
+        updatedItems = state.items.concat(action.item);
+      }
+
       return {
         items: updatedItems,
         totalAmount: updatedTotalAmount,
       }
     }
+    if (action.type === 'REMOVE') {
+        //check if items are already in the cart
+       const existingCartItemIndex = state.items.findIndex(
+        (item) => item.id === action.id
+      );
+      const existingItem = state.items[existingCartItemIndex];
+      const updatedTotalAmount = state.totalAmount - existingItem.price;
+      let updatedItems;
+      if (existingItem.amount === 1) {
+        updatedItems = state.items.filter(item => item.id !== action.id);
+      } else {
+        const updatedIte = {...existingItem, amount: existingItem.amount - 1};
+        updatedItems = [...state.items];
+        updatedItems[existingCartItemIndex] = updatedItem;
+      }
+
+      return {
+        items: updatedItems,
+        totalAmount: updatedTotalAmount
+      }
+    }
+
     return defaultCartState
 }
 
 //this is to manage data and provide it to all components that need it 
 const CardProvider = (props) => {
-    const [cartState, dispatchCartAction] = useReducer(cartReducer, defaultCartState);
+    const [cartState, dispatchCartAction] = useReducer(
+        cartReducer, 
+        defaultCartState
+    );
 
-    const addItemFromCartHandler = (item) => {
+    const addItemToCartHandler = (item) => {
         dispatchCartAction({type: 'ADD', item: item})
     };
 
@@ -33,8 +77,8 @@ const CardProvider = (props) => {
     
     const cartContext = {
         items: cartState.items,
-        totalAmount: 0,
-        addItem: addItemFromCartHandler,
+        totalAmount: cartState.totalAmount,
+        addItem: addItemToCartHandler,
         removeItem: removeItemFromCartHandler,
     }
     
