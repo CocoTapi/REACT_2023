@@ -19,7 +19,7 @@ const Cart = (props) => {
         cartCtx.addItem({...item, amount: 1})
     };
 
-    const cartItem = (
+    const cartItems = (
         <ul className={classes['cart-items']}>
             {cartCtx.items.map((item) => (
                 <CartItem 
