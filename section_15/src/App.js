@@ -12,7 +12,7 @@ function App() {
     setIsLoading(true)
     setError(null);
     try {
-      const response = await fetch('https://swapi.dev/api/film/');
+      const response = await fetch('https://swapi.dev/api/films/');
       const data = await response.json();
 
       if (!response.ok) {
