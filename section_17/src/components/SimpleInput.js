@@ -1,20 +1,41 @@
-import { useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 
 const SimpleInput = (props) => {
   const nameInputRef = useRef('');
   const [enteredName, setEnteredName] = useState('');
-  const [enteredNameIsValid, setEnteredNameIsValid] = useState(true)
+  const [enteredNameIsValid, setEnteredNameIsValid] = useState(false);
+  const [enteredNameTouched, setEnteredNameTouched] = useState(false);
+
+  useEffect(() => {
+    if (enteredNameIsValid){
+      console.log("Name Input is valid")
+    }
+  }, [enteredNameIsValid]);
 
   const nameInputChangeHandler = (event) => {
     setEnteredName(event.target.value);
-  } 
+
+    if (event.target.value.trim() !== '') {
+      setEnteredNameIsValid(true);
+    }
+  }; 
+
+  const nameInputBlurHandler = (event) => {
+    setEnteredNameTouched(true)
+
+    if (event.target.value.trim() === '') {
+      setEnteredNameIsValid(false);
+    }
+  };
 
   const formSubmissionHandler = (event) => {
     event.preventDefault();
 
+    setEnteredNameTouched(true);
+
     if (enteredName.trim() === '') {
       setEnteredNameIsValid(false);
-      return ;
+      return;
     }
 
     setEnteredNameIsValid(true);
@@ -28,9 +49,11 @@ const SimpleInput = (props) => {
     setEnteredName('');
   }
 
-  const nameInputClasses = enteredNameIsValid 
-    ? 'form-control' 
-    : 'form-control invalid';
+  const nameInputIsInvalid = !enteredNameIsValid && enteredNameTouched
+
+  const nameInputClasses = nameInputIsInvalid 
+    ? 'form-control invalid' 
+    : 'form-control';
 
   return (
     <form onSubmit={formSubmissionHandler}>
@@ -41,9 +64,10 @@ const SimpleInput = (props) => {
           type='text' 
           id='name' 
           onChange={nameInputChangeHandler}
+          onBlur={nameInputBlurHandler}
           value={enteredName} 
         />
-        { !enteredNameIsValid && <p className='error-text'>Name must not be enpty.</p>}
+        { nameInputIsInvalid && <p className='error-text'>Name must not be enpty.</p>}
       </div>
       <div className="form-actions">
         <button>Submit</button>
