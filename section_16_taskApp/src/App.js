@@ -16,6 +16,7 @@ function App() {
 
     setTasks(loadedTasks);
   }, []);
+  
   const  { isLoading, error, sendRequest: fetchTasks } = useHttp(
     { url: 'https://react-http-d316b-default-rtdb.firebaseio.com/tasks.json'},
     transformTasks
