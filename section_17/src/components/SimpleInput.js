@@ -1,7 +1,7 @@
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useState } from 'react';
 
 const SimpleInput = (props) => {
-  const nameInputRef = useRef('');
+  //const nameInputRef = useRef('');
   const [enteredName, setEnteredName] = useState('');
   const [enteredNameIsValid, setEnteredNameIsValid] = useState(false);
   const [enteredNameTouched, setEnteredNameTouched] = useState(false);
@@ -42,8 +42,8 @@ const SimpleInput = (props) => {
 
     console.log(enteredName);
 
-    const enteredValue = nameInputRef.current.value;
-    console.log(enteredValue);
+    // const enteredValue = nameInputRef.current.value;
+    // console.log(enteredValue);
 
     //nameInputRef.current.value = ''; => Not IdleDeadline. Don't manipulate the dom!
     setEnteredName('');
@@ -60,7 +60,7 @@ const SimpleInput = (props) => {
       <div className={nameInputClasses}>
         <label htmlFor='name'>Your Name</label>
         <input 
-          ref={nameInputRef} 
+          // ref={nameInputRef} 
           type='text' 
           id='name' 
           onChange={nameInputChangeHandler}
