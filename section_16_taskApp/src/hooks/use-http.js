@@ -11,9 +11,9 @@ const useHttp = () => {
       const response = await fetch(
         //".url" is to make sure we pass an object with has a URL. 
         requestConfig.url, {
-            method: requestConfig.method,
-            headers: requestConfig.headers,
-            body: JSON.stringify(requestConfig.body)
+            method: requestConfig.method ? requestConfig.method: 'GET',
+            headers: requestConfig.headers ? requestConfig.headers: {},
+            body: requestConfig.body ? JSON.stringify(requestConfig.body): null,
         }
       );
 
