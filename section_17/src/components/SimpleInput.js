@@ -43,6 +43,10 @@ const SimpleInput = (props) => {
     ? 'form-control invalid' 
     : 'form-control';
 
+  const emailInputClasses = emailInputHasError 
+    ? 'form-control invalid' 
+    : 'form-control';
+
   return (
     <form onSubmit={formSubmissionHandler}>
       <div className={nameInputClasses}>
@@ -56,7 +60,7 @@ const SimpleInput = (props) => {
         />
         { nameInputHasError && <p className='error-text'>Name must not be enpty.</p>}
       </div>
-      <div className={nameInputClasses}>
+      <div className={emailInputClasses}>
         <label htmlFor='email'>Email Address</label>
         <input 
           type='text' 
