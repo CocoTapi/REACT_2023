@@ -6,7 +6,7 @@ import Button from '../UI/Button/Button';
 
 const initialEmailState = {
   value: '',
-  isValid: false
+  isValid: null
 }
 
 const emailReducer = (state, action) => {
@@ -21,7 +21,7 @@ const emailReducer = (state, action) => {
 
 const initialPasswordState = {
   value: '',
-  isValid: false
+  isValid: null
 }; 
 
 const passwordReducer = (state, action) => {
