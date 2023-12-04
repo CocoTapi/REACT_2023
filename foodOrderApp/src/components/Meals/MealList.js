@@ -1,6 +1,7 @@
 import React from "react";
 
 import MealItem from "./MealItem";
+import Card from "../UI/Card";
 
 const MealList = ({ data }) => {
     let content;
@@ -10,7 +11,7 @@ const MealList = ({ data }) => {
     })
     
     return (
-        <div>{content}</div>
+        <Card>{content}</Card>
     )
 };
 
