@@ -1,8 +1,9 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 import Header from "./components/Layout/Header";
 import ShopTitle from "./components/Meals/ShopTitle";
 import MealList from './components/Meals/MealList';
+import CartList from './components/Cart/CartList';
 
 function App() {
     const data = [
@@ -37,14 +38,26 @@ function App() {
           price: 1.99
       }
   ];
+
+  const [isCartOpen, setIsCartOpen] = useState(false);
+
+    const openCartHandler = () => {
+        setIsCartOpen(true)
+    };
+
+    const closeCartHandler = () => {
+      setIsCartOpen(false)
+    };
+
  
   return (
     <React.Fragment>
-      <Header />
+      <Header onClick={openCartHandler} />
       <ShopTitle />
       <MealList 
         data={data}
       />
+      {isCartOpen && <CartList onClick={closeCartHandler} />}
     </React.Fragment>
   );
 }
