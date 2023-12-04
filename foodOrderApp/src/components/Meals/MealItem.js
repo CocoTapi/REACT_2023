@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-//import Button from "../UI/Button";
+import Button from "../UI/Button";
 
 const MealItem = ({item, onClick, amount}) => {
     const [eachItemAmount, setEachItemAmount] = useState(0);
@@ -18,7 +18,7 @@ const MealItem = ({item, onClick, amount}) => {
                 <div>Amount</div>
                 <div>{eachItemAmount}</div>
             </div>
-            <button onClick={addFoodHandler}>+ ADD</button>
+            <Button onClick={addFoodHandler}>+ ADD</Button>
         </div>
     )
 };
