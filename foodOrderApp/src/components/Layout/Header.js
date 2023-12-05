@@ -1,16 +1,20 @@
 import React from "react";
-import Button from "../UI/Button";
+import mealsImage from'../../assets/riceballs.jpg';
+import classes from './Header.module.css';
+import HeaderCartButton from "./HeaderCartButton";
 
 const Header = (props) => {
     return (
-    <div>
-        <h1>Sankaku Omusubi</h1>
-        <Button 
-            onClick={props.onClick}
-        >
-            Cart {props.cartNum}
-        </Button>
-    </div>
+    <React.Fragment>
+        <header className={classes.header} >
+            <h1>Sankaku Omusubi</h1>
+            <HeaderCartButton />
+        </header>
+        <div className={classes['main-image']} >
+            <img src={mealsImage} alt="rice balls" />
+        </div>
+        
+    </React.Fragment>
     )
 };
 
