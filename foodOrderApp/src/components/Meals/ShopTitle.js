@@ -4,7 +4,7 @@ import classes from './ShopTitle.module.css';
 
 const ShopTitle = () => {
     return (
-        <div className={classes.sammary}>
+        <div className={classes.summary}>
             <h2>Handcrafted Onigiri Delights</h2>
             <h3>
                 We bring the healthy japanese onigiri to life with a modern twist. 
