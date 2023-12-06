@@ -4,16 +4,16 @@ import React from "react";
 import MealItemForm from "./MealItemForm";
 import classes from './MealItem.module.css';
 
-const MealItem = ({item, onClick, amount}) => {
+const MealItem = (props) => {
     return (
         <li>
             <div className={classes.meal}>
-                <h3>{item.name}</h3>
-                <div className={classes.description}>{item.description}</div>
-                <div className={classes.price}>{`$ ${item.price.toFixed(2)}`}</div>
+                <h3>{props.item.name}</h3>
+                <div className={props.description}>{props.item.description}</div>
+                <div className={props.item.price}>{`$ ${props.item.price.toFixed(2)}`}</div>
             </div>
             <div>
-                <MealItemForm />
+                <MealItemForm id={props.item.id} />
             </div>
         </li>
     )
