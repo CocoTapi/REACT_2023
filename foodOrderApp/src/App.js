@@ -1,9 +1,10 @@
-import { Fragment, useState } from 'react';
+import { useState } from 'react';
 
 import Header from "./components/Layout/Header";
 import ShopTitle from "./components/Meals/ShopTitle";
 import MealList from './components/Meals/MealList';
 import CartList from './components/Cart/CartList';
+import CartProvider from './components/store/CartProvider';
 
 function App() {
     const data = [
@@ -50,14 +51,14 @@ function App() {
     };
  
   return (
-    <Fragment>
+    <CartProvider>
       {isCartOpen && <CartList onClose={closeCartHandler} />}
       <Header onOpenCart={openCartHandler} />
-      <ShopTitle />
-      <MealList 
-        data={data}
-      />
-    </Fragment>
+      <main>
+        <ShopTitle />
+        <MealList data={data} />
+      </main>
+    </CartProvider>
   );
 }
 
