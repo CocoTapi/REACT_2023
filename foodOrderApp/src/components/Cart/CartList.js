@@ -1,4 +1,4 @@
-import Button from "../UI/Button";
+//import Button from "../UI/Button";
 import Modal from "../UI/Modal";
 import CartItem from "./CartItem";
 import classes from './CartList.module.css';
@@ -6,10 +6,10 @@ import classes from './CartList.module.css';
 function CartList (props) {
     const cartItems = [
         { id: 'c1', name: 'sushi', amount: 2, price: 12.99 }, 
-    ].map((item) => <CartItem />)
+    ].map((item) => <CartItem key={item.id} item={item} />)
 
     return (
-        <Modal>
+        <Modal onClose={props.onClose}>
             <ul className={classes['cart-items']}>
                 {cartItems}
             </ul>
@@ -17,9 +17,9 @@ function CartList (props) {
                 <span>Total Amount</span>
                 <span>35.62</span>
             </div>
-            <div className={classes.action}>
-                <button className={classes['button-alt']}></button>
-                <button className={classes.button}></button>
+            <div className={classes.actions}>
+                <button className={classes['button-alt']} onClick={props.onClose}>Close</button>
+                <button className={classes.button}>Order</button>
             </div>
         </Modal>
     )

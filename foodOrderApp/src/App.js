@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { Fragment, useState } from 'react';
 
 import Header from "./components/Layout/Header";
 import ShopTitle from "./components/Meals/ShopTitle";
@@ -42,23 +42,22 @@ function App() {
   const [isCartOpen, setIsCartOpen] = useState(false);
 
     const openCartHandler = () => {
-        setIsCartOpen(true)
+        setIsCartOpen(true);
     };
 
     const closeCartHandler = () => {
-      setIsCartOpen(false)
+      setIsCartOpen(false);
     };
-
  
   return (
-    <React.Fragment>
-      <Header onClick={openCartHandler} />
+    <Fragment>
+      {isCartOpen && <CartList onClose={closeCartHandler} />}
+      <Header onOpenCart={openCartHandler} />
       <ShopTitle />
       <MealList 
         data={data}
       />
-      {isCartOpen && <CartList onClick={closeCartHandler} />}
-    </React.Fragment>
+    </Fragment>
   );
 }
 
