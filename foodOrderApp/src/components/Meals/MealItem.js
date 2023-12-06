@@ -1,31 +1,21 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 
-import Button from "../UI/Button";
+//import Button from "../UI/Button";
+import MealItemForm from "./MealItemForm";
+import classes from './MealItem.module.css';
 
 const MealItem = ({item, onClick, amount}) => {
-    const [eachItemAmount, setEachItemAmount] = useState(0);
-    const [totalPrice, setTotalPrice] = useState(0);
-
-    useEffect(() => {
-        setTotalPrice(eachItemAmount * item.price)
-    }, [eachItemAmount, item.price])
-
-    const addFoodHandler =() => {
-      setEachItemAmount(eachItemAmount + 1);
-    }  
-
     return (
-        <div>
-            <div>{item.name}</div>
-            <div>{item.description}</div>
-            <div>{`$ ${item.price}`}</div>
-            <div>
-                <div>Amount</div>
-                <div>{eachItemAmount}</div>
+        <li>
+            <div className={classes.meal}>
+                <h3>{item.name}</h3>
+                <div className={classes.description}>{item.description}</div>
+                <div className={classes.price}>{`$ ${item.price.toFixed(2)}`}</div>
             </div>
-            <Button onClick={addFoodHandler}>+ ADD</Button>
-            <div>$ {totalPrice}</div>
-        </div>
+            <div>
+                <MealItemForm />
+            </div>
+        </li>
     )
 };
 
