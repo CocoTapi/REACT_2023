@@ -3,7 +3,7 @@ import Modal from "../UI/Modal";
 import CartItem from "./CartItem";
 import classes from './CartList.module.css';
 
-function CartList (props) {
+const CartList = (props) => {
     const cartItems = [
         { id: 'c1', name: 'sushi', amount: 2, price: 12.99 }, 
     ].map((item) => <CartItem key={item.id} item={item} />)

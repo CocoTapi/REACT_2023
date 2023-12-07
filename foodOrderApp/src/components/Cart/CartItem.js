@@ -1,6 +1,6 @@
 import classes from './CartItem.module.css';
 
-function CartItem (props) {
+const CartItem = (props) => {
     return (
         <div className={classes.cart}>
             <h2>{props.item.name}</h2>
