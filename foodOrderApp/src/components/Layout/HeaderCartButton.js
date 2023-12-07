@@ -11,9 +11,10 @@ const HeaderCartButton = (props) => {
     const numberOfCartItems = cartCtx.items.reduce((currentNum, item) => {
         return currentNum + item.amount;
     }, 0);
+    console.log(numberOfCartItems);
 
     return (
-        <button className={classes.button} onClick={props.onClick}> 
+        <button className={classes.button} onClick={props.onOpenCart}> 
             <span className={classes.icon}>
                 <CartIcon />
             </span>

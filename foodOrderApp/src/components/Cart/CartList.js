@@ -4,9 +4,12 @@ import CartItem from "./CartItem";
 import classes from './CartList.module.css';
 
 const CartList = (props) => {
-    const cartItems = [
+    const dummyData =  [
         { id: 'c1', name: 'sushi', amount: 2, price: 12.99 }, 
-    ].map((item) => <CartItem key={item.id} item={item} />)
+    ];
+
+    const cartItems =dummyData.map((item) => 
+        <CartItem key={item.id} item={item} />)
 
     return (
         <Modal onClose={props.onClose}>
