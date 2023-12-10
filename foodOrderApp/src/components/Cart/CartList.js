@@ -1,12 +1,14 @@
 //import Button from "../UI/Button";
-import { useContext } from "react";
+import { useContext, useState } from "react";
 
 import Modal from "../UI/Modal";
 import CartItem from "./CartItem";
 import classes from './CartList.module.css';
 import CartContext from "../store/cart-context";
+import Checkout from "./Checkout";
 
 const CartList = (props) => {
+    const [isCheckout, setIsCheckout] = useState(false);
     const cartCtx = useContext(CartContext);
     const totalAmount = `$${cartCtx.totalAmount.toFixed(2)}`;
     const hasItems = cartCtx.items.length > 0;
@@ -19,6 +21,10 @@ const CartList = (props) => {
         cartCtx.addItem({...item, amount: 1});
     };
 
+    const orderBtnHandler = () => {
+        setIsCheckout(true);
+    }
+
     const cartItems =cartCtx.items.map((item) => 
         <CartItem 
             key={item.id} 
@@ -26,6 +32,20 @@ const CartList = (props) => {
             onAdd={cartItemAddHandler.bind(null, item)}
             onRemove={cartItemRemoveHandler.bind(null, item.id)}
         />
+    );
+
+    const modalActions = (
+        <div className={classes.actions}>
+            <button 
+                className={classes['button-alt']} onClick={props.onClose}>
+                    Close
+                </button>
+            {hasItems && (
+                <button className={classes.button} onClick={orderBtnHandler}>
+                    Order
+                </button>
+            )} 
+        </div>
     );
 
     return (
@@ -37,10 +57,8 @@ const CartList = (props) => {
                 <span>Total Amount</span>
                 <span>{totalAmount}</span>
             </div>
-            <div className={classes.actions}>
-                <button className={classes['button-alt']} onClick={props.onClose}>Close</button>
-                {hasItems && <button className={classes.button}>Order</button>} 
-            </div>
+            {isCheckout && <Checkout onCancel={props.onClose}/>}
+            {!isCheckout && modalActions}
         </Modal>
     )
 };
