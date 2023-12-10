@@ -8,7 +8,7 @@ const Checkout = (props) => {
         city: true, 
         state: true,
         postalCode: true
-    })
+    });
 
     const nameInputRef = useRef();
     const streetInputRef = useRef();
@@ -43,6 +43,9 @@ const Checkout = (props) => {
             postalCode: enteredPostalIsValid
         });
 
+        console.log(formInputValidity);
+        console.log(enteredName, enteredCity, enteredStreet, enteredState, enteredPostal);
+
         const formIsValid = 
             enteredNameIsValud &&
             enteredStreetIsValid &&
@@ -53,6 +56,14 @@ const Checkout = (props) => {
         if(formIsValid) {
            return;
         }
+
+        props.onConfirm({
+            name: enteredName,
+            street: enteredStreet,
+            city: enteredCity, 
+            state: enteredState,
+            postalCode: enteredPostal
+        });
     }
 
     return (
@@ -80,7 +91,7 @@ const Checkout = (props) => {
             <div className={`${classes.control} ${formInputValidity.postal ? '' : classes.invalid}`}>
                 <label htmlFor='postal'>Postal Code</label>
                 <input type='text' id='postal' ref={postalInputRef} />
-                {!formInputValidity.postal && <p>Please enter a valid postal!</p>}
+                {!formInputValidity.postal && <p>Please enter valid a postal code!</p>}
             </div>
             <div className={classes.actions}>
                 <button onClick={props.onCancel}>
