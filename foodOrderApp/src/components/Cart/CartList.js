@@ -37,8 +37,8 @@ const CartList = (props) => {
             })
         });
         setIsSubmitting(false);
-        setIsCheckout(false);
         setDidSubmit(true);
+        cartCtx.clearCart();
     };
 
     const cartItems =cartCtx.items.map((item) => 
