@@ -7,7 +7,7 @@ const Checkout = (props) => {
         street: true,
         city: true, 
         state: true,
-        postalCode: true
+        postal: true
     });
 
     const nameInputRef = useRef();
@@ -40,11 +40,10 @@ const Checkout = (props) => {
             street: enteredStreetIsValid,
             city: enteredCityIsValid, 
             state: enteredStateIsValid,
-            postalCode: enteredPostalIsValid
+            postal: enteredPostalIsValid
         });
 
         console.log(formInputValidity);
-        console.log(enteredName, enteredCity, enteredStreet, enteredState, enteredPostal);
 
         const formIsValid = 
             enteredNameIsValud &&
@@ -53,16 +52,17 @@ const Checkout = (props) => {
             enteredStateIsValid &&
             enteredPostalIsValid;
         
-        if(formIsValid) {
+        if(!formIsValid) {
            return;
         }
+
 
         props.onConfirm({
             name: enteredName,
             street: enteredStreet,
             city: enteredCity, 
             state: enteredState,
-            postalCode: enteredPostal
+            postal: enteredPostal
         });
     }
 
