@@ -1,6 +1,9 @@
 import { useRef, useState } from 'react';
 import classes from './Checkout.module.css';
 
+const isEmpty = (value) => value.trim() === '';
+const isFiveChars = (value) => value.trim().length === 5;
+
 const Checkout = (props) => {
     const [formInputValidity, setFormInputValidity] = useState({
         name: true,
@@ -15,10 +18,6 @@ const Checkout = (props) => {
     const cityInputRef = useRef();
     const stateInputRef = useRef();
     const postalInputRef = useRef();
-
-    const isEmpty = (value) => value.trim().length === '';
-    const isFiveChars = (value) => value.trim().length === 5;
-
 
     const confirmHandler = (event) => {
         event.preventDefault();
