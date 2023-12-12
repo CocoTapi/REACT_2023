@@ -1,5 +1,5 @@
 import { useSelector, useDispatch } from 'react-redux';
-import { authActions } from '../store';
+import { authActions } from '../store/authSlice';
 import classes from './Header.module.css';
 
 const Header = (props) => {
@@ -23,7 +23,6 @@ const Header = (props) => {
           </li>
           <li>
             {isAuth && <button onClick={logoutHandler}>Logout</button>}
-            {!isAuth && <button onClick={props.onShowLoginForm}>Login</button>}
           </li>
         </ul>
       </nav>
