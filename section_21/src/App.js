@@ -1,9 +1,22 @@
-import { RouterProvider, createBrowserRouter } from 'react-router-dom';
+import { RouterProvider, createBrowserRouter, createRoutesFromElements, Route } from 'react-router-dom';
 
-import HomePage from './pages/Home';
+import HomePage from './pages/HomePage';
+import ProductsPage from './pages/ProductsPage';
 
+//routing version 2 
+// const routeDefinitions = createRoutesFromElements(
+//   <Route>
+//     <Route path='/' element={<HomePage />} />
+//     <Route path='products' element={<ProductsPage />} />
+//   </Route>
+// );
+
+// const router = createBrowserRouter(routeDefinitions);
+
+//routing version 1
 const router = createBrowserRouter([
   { path: '/', element: <HomePage /> },
+  { path: '/products', element: <ProductsPage /> }
 ]);
 
 function App() {
