@@ -33,9 +33,16 @@ const Products = (props) => {
     <section className={classes.products}>
       <h2>Buy your favorite products</h2>
       <ul>
-        {DummyData.map((item) => {
-          return <ProductItem key={item.id} item={item} />
-        })}
+        {DummyData.map((item) => (
+          <ProductItem 
+            key={item.id}
+            id={item.id}
+            title={item.title}
+            price={item.price}  
+            description={item.description}
+          />
+          )
+         )}
       </ul>
     </section>
   );
