@@ -11,7 +11,7 @@ function MainNavigation() {
                         <NavLink 
                             to="/" 
                             className={({ isActive }) => 
-                                isActive ? classes.avtive : undefined 
+                                isActive ? classes.active : undefined 
                             } 
                             //only need this here to tell when url is end of "/"
                             end
