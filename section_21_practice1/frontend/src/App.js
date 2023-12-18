@@ -26,16 +26,18 @@ import EventsPage from './components/pages/EventsPage';
 import EventDetailPage from './components/pages/EventDetailPage';
 import EditEventPage from './components/pages/EditEventPage';
 import NewEventPage from './components/pages/NewEventPage';
+import RootLayout from './components/pages/Root';
 
 const router = createBrowserRouter([
   {
     path: '/',
+    element: <RootLayout />,
     children: [
       { path: '', element: <HomePage /> },
-      { parh: 'events', element: <EventsPage />},
-      { parh: 'events/:eventId', element: <EventDetailPage />},
-      { parh: 'events/:eventId/edit', element: <EditEventPage />},
-      { parh: 'events/new', element: <NewEventPage />},
+      { path: 'events', element: <EventsPage />},
+      { path: 'events/:eventId', element: <EventDetailPage />},
+      { path: 'events/:eventId/edit', element: <EditEventPage />},
+      { path: 'events/new', element: <NewEventPage />},
     ]
   }
 ]);
