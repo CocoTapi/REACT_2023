@@ -19,13 +19,14 @@ import ProductDetailPage from './pages/ProductDetailPage';
 //routing version 1
 const router = createBrowserRouter([
   { 
+    //this is an absolute path which needs to include children's path(relative path) or dont include at all
     path: '/', 
     element: <RootLayout />,
     errorElement: <ErrorPage />,
     children: [
-      { path: '/', element: <HomePage /> },
-      { path: '/products', element: <ProductsPage /> },
-      { path: '/products/:productId', element: <ProductDetailPage /> }
+      { index: true, element: <HomePage /> }, //path: ''
+      { path: 'products', element: <ProductsPage /> },
+      { path: 'products/:productId', element: <ProductDetailPage /> }
     ]
   }
 ]);
