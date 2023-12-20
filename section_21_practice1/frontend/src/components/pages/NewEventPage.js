@@ -30,6 +30,11 @@ export async function action ({request, params}) {
         body: JSON.stringify(eventData)
     });
 
+    //422 is coming from backend, line 51 /routes/events.js
+    if (response.status === 422) {
+        return response;
+    }
+
     if (!response.ok) {
         throw json({message: 'Could not send the form data'}, {status: 500})
     };
