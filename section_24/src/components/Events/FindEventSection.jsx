@@ -1,6 +1,6 @@
 import { useRef, useState } from 'react';
 import { useQuery } from '@tanstack/react-query';
-import fetchEvents from '../../util/fetchEvents';
+import fetchEvents from '../../util/http';
 import ErrorBlock from '../UI/ErrorBlock';
 import LoadingIndicator from '../UI/LoadingIndicator';
 import EventItem from './EventItem';
