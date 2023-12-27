@@ -19,7 +19,9 @@ export default function EventDetails() {
     onSuccess: () => {
       //to update all events page
       queryClient.invalidateQueries({
-        queryKey: ['events']
+        queryKey: ['events'],
+        //this current page won't trigger to refetch
+        refetchType: 'none',
       })
       navigate('/events');
     }
