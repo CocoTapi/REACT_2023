@@ -1,4 +1,4 @@
-export async function fetchEvents({ signal, searchTerm }) {
+export default async function fetchEvents({ signal, searchTerm }) {
     let url = 'http://localhost:3000/events';
 
     if (searchTerm) {
@@ -36,4 +36,19 @@ export async function fetchEvents({ signal, searchTerm }) {
     const { event } = await response.json;
 
     return event;
+  }
+
+  export async function fetchSelectableImages ({ signal }) {
+    const response = await fetch(`http://localhost:3000/events/images`, { signal });
+
+    if(!response.ok) {
+      const error = new Error('An error occured while fetching the images');
+      error.code = response.status;
+      error.info = await response.json();
+      throw error
+    }
+
+    const { images } = await response.json();
+
+    return images;
   }
