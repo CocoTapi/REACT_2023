@@ -82,13 +82,13 @@ export default function EditEvent() {
     content = (
       <EventForm inputData={data} onSubmit={handleSubmit}>
         {state === 'submitting' ?(
-          <p>Submitting data...</p>
+          <p>Sending data...</p>
           ) : (
             <>
              <Link to="../" className="button-text">
                 Cancel
              </Link>
-             <button type="submit" className="button" onClick={handleSubmit}>
+             <button type="submit" className="button">
                 Update
              </button>
             </>
@@ -109,7 +109,7 @@ export default function EditEvent() {
 export function loader({ params }) {
   return queryClient.fetchQuery({
     queryKey: ['events', params.id],
-    queryFn: ({signal}) => fetchEvent({ signal, id: params.id})
+    queryFn: ({ signal }) => fetchEvent({ signal, id: params.id})
   });
 } 
 
