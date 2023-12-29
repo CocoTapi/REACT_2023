@@ -27,11 +27,11 @@ export default async function fetchEvents({ signal, searchTerm, max }) {
     return events;
   }
 
-  export async function createEvent (formData) {
-    const response = await fetchEvents('http://localhost:3000/events', {
+  export async function createNewEvent (eventData) {
+    const response = await fetch('http://localhost:3000/events', {
       method: 'POST',
       headers: {'Content-Type': 'application/json'},
-      body: JSON.stringify(formData)
+      body: JSON.stringify(eventData)
     });
 
     if (!response.ok) {
