@@ -6,9 +6,14 @@ export default function Modal({ title, children, onClose }) {
     <>
       <div className="backdrop" onClick={onClose} />
       <motion.dialog 
-        initial={{ opacity: 0, y: 40 }}
-        animate={{ opacity: 1, y: 0 }}
-        exit={{ opacity: 0, y: 40 }}
+        // when you difine here, you can activate the same animation to child components automatically by using varients
+        varients={{
+          hidden: { opacity: 0, y: 40 },
+          visible: { opacity: 1, y: 0 }
+        }}
+        initial='hidden'
+        animate='visible'
+        exit='hidden'
         open 
         className="modal"
       >
