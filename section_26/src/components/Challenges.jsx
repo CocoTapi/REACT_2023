@@ -45,7 +45,9 @@ export default function Challenges() {
           {displayedChallenges.length > 0 && (
             <motion.ol 
               key="list"
-              className="challenge-items" 
+              className="challenge-items"
+              initial={{ opacity: 0, y: -20 }}
+              animate={{ opacity: 1, y: 0 }} 
               exit={{ y: -30, opacity: 0 }}
             >
               <AnimatePresence>
@@ -60,7 +62,7 @@ export default function Challenges() {
               </AnimatePresence>
             </motion.ol>
           )}
-        </AnimatePresence>
+        
         {displayedChallenges.length === 0 && 
           <motion.p 
             key="fallback"
@@ -69,7 +71,9 @@ export default function Challenges() {
             exit={{ opacity: 0, y: -20  }}
           >
             No challenges found.
-          </motion.p>}
+          </motion.p>
+        }
+        </AnimatePresence>
       </ChallengeTabs>
     </div>
   );
